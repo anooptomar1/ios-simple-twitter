@@ -26,7 +26,7 @@ class User: NSObject {
         self.screenName = dictionary["screen_name"] as NSString;
         self.profileImageUrl = dictionary["profile_image_url"] as NSString;
         self.tagLine = dictionary["description"] as NSString;
-        //println(dictionary)
+        println(dictionary)
     }
     
     func Logout(){

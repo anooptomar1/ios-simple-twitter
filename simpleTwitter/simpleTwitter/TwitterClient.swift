@@ -28,13 +28,32 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
     }
     
     func getHomeTimeline(completion: (tweets: [Tweet]?) -> ()){
-        TwitterClient.sharedInstance.GET("1.1/statuses/home_timeline.json", parameters: nil, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+        var param = ["count":20]
+        TwitterClient.sharedInstance.GET("1.1/statuses/home_timeline.json", parameters: param, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
                         //println(response)
             var tweets = Tweet.tweetsFromArray(response as [NSDictionary])
             completion(tweets: tweets)
             
             }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
                 println(error)
+        })
+    }
+    
+    func favoriteTweet(tweetId: NSString, complete:(success: Bool) -> ()){
+        var param = ["id" : tweetId]
+        TwitterClient.sharedInstance.POST("1.1/favorites/create.json", parameters: param, constructingBodyWithBlock: nil, success: { (operation: AFHTTPRequestOperation!, result: AnyObject!) -> Void in
+            complete(success: true)
+            }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+            complete(success: false)
+        })
+    }
+    
+    func destroyFavoriteTweet(tweetId: NSString, complete:(success: Bool) -> ()){
+        var param = ["id" : tweetId]
+        TwitterClient.sharedInstance.POST("1.1/favorites/destroy.json", parameters: param, constructingBodyWithBlock: nil, success: { (operation: AFHTTPRequestOperation!, result: AnyObject!) -> Void in
+            complete(success: true)
+            }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                complete(success: false)
         })
     }
     

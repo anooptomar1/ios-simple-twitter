@@ -28,9 +28,6 @@ class TweetsViewController: UIViewController , UITableViewDelegate, UITableViewD
             self.tweets = tweets!
             self.tableView.reloadData()
         }
-        //var timeAgoDate = NSDate(timeIntervalSinceNow: 80)//.dateByAddingTimeInterval(<#NSDate#>)
-        //println("time ago: \(timeAgoDate.shortTimeAgoSinceNow())")
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -42,7 +39,7 @@ class TweetsViewController: UIViewController , UITableViewDelegate, UITableViewD
         if(tweets.count > 0){
             return tweets.count
         }
-        return 20
+        return 0
     }
     
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

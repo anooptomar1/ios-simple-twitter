@@ -15,7 +15,10 @@ class TweetTableViewCell: UITableViewCell {
     @IBOutlet weak var handleLabel: UILabel!
     @IBOutlet weak var createdAtLabel: UILabel!
     @IBOutlet weak var tweetLabel: UILabel!
+    var tweetId = ""
+    var favorited = false
     
+    @IBOutlet weak var favoriteBtn: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,8 +39,13 @@ class TweetTableViewCell: UITableViewCell {
         self.profileImage.setImageWithURL(NSURL(string: tweet.user!.profileImageUrl));
         self.tweetLabel.text = tweet.text
         self.userLabel.text = tweet.user!.name
-        self.handleLabel.text = tweet.user!.screenName
+        self.handleLabel.text = "@\(tweet.user!.screenName)"
         self.createdAtLabel.text = tweet.createdAt?.shortTimeAgoSinceNow()
+        self.tweetId = tweet.id
+        self.favorited = tweet.favorited
+        if(tweet.favorited){
+            setFavoriteButton()
+        }
     }
     
     override func layoutSubviews() {
@@ -45,4 +53,31 @@ class TweetTableViewCell: UITableViewCell {
         self.tweetLabel.preferredMaxLayoutWidth = self.tweetLabel.frame.size.width;
     }
 
+    @IBAction func onFavorite(sender: AnyObject) {
+        if(self.favorited){
+            TwitterClient.sharedInstance.destroyFavoriteTweet(self.tweetId, complete: { (success) -> () in
+                if(success){
+                    self.favorited = false
+                    self.setFavoriteButton()
+                }
+            })
+        }else{
+            TwitterClient.sharedInstance.favoriteTweet(self.tweetId, complete: { (success) -> () in
+                if(success){
+                    self.favorited = true
+                    self.setFavoriteButton()
+                }
+            })
+        }
+        println(self.tweetId)
+    }
+    
+    func setFavoriteButton(){
+        if(self.favorited){
+            self.favoriteBtn.imageView?.image = UIImage(named: "favorite_on")
+        }
+        else{
+            self.favoriteBtn.imageView?.image = UIImage(named: "favorite")
+        }
+    }
 }
