@@ -16,7 +16,7 @@ let userDidLogoutNotification = "userDidLogoutNotification"
 class User: NSObject {
     var name: String;
     var screenName: String;
-    var profileImageUrl: String;
+    var profileImageUrl: String!;
     var tagLine: String;
     var dictionary: NSDictionary;
     

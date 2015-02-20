@@ -24,19 +24,20 @@ class TweetsViewController: UIViewController , UITableViewDelegate, UITableViewD
         self.tableView.delegate = self
         self.tableView.rowHeight = UITableViewAutomaticDimension;
         
-//        TwitterClient.sharedInstance.getHomeTimeline { (tweets) -> () in
-//            self.tweets = tweets!
-//            self.tableView.reloadData()
-//        }
+        TwitterClient.sharedInstance.getHomeTimeline { (tweets) -> () in
+            self.tweets = tweets!
+            self.tableView.reloadData()
+        }
         //var timeAgoDate = NSDate(timeIntervalSinceNow: 80)//.dateByAddingTimeInterval(<#NSDate#>)
         //println("time ago: \(timeAgoDate.shortTimeAgoSinceNow())")
         // Do any additional setup after loading the view.
     }
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.navigationBarHidden = false
-    }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tableView.rowHeight = UITableViewAutomaticDimension;
+    }
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(tweets.count > 0){
             return tweets.count
@@ -50,7 +51,9 @@ class TweetsViewController: UIViewController , UITableViewDelegate, UITableViewD
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell") as TweetTableViewCell
-        
+        if(tweets.count>0){
+            cell.setTweet(self.tweets[indexPath.row]);
+        }
         return cell
     }
     

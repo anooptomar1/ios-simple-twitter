@@ -31,11 +31,6 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         TwitterClient.sharedInstance.GET("1.1/statuses/home_timeline.json", parameters: nil, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
                         //println(response)
             var tweets = Tweet.tweetsFromArray(response as [NSDictionary])
-        
-//            for tweet in tweets{
-//                println("\(tweet.user?.name) has tweeted \(tweet.text) at \(tweet.createdAt)")
-//            }
-            
             completion(tweets: tweets)
             
             }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in

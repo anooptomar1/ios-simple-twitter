@@ -72,12 +72,12 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anoop Tomar" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Shs-Iv-SN2">
-                                                    <rect key="frame" x="64" y="8" width="88" height="17"/>
+                                                    <rect key="frame" x="64" y="8" width="88" height="13.5"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@anooptomar" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vru-GH-HEf">
-                                                    <rect key="frame" x="160" y="8" width="71.5" height="17"/>
+                                                    <rect key="frame" x="160" y="8" width="71.5" height="13.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -88,8 +88,8 @@
                                                     <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Been doing iphone dev and loving it. Its cool and fun" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vmd-lu-6AY">
-                                                    <rect key="frame" x="64" y="27" width="240" height="33.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Been doing iphone dev and loving it. Its cool and fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vmd-lu-6AY">
+                                                    <rect key="frame" x="64" y="23" width="248" height="37.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -104,7 +104,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pig-fr-K9e">
+                                                <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pig-fr-K9e">
                                                     <rect key="frame" x="109" y="63" width="28" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="22" id="Exk-ok-p9p"/>
@@ -126,13 +126,13 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vmd-lu-6AY" secondAttribute="trailing" constant="8" id="5PX-o2-UXX"/>
+                                                <constraint firstAttribute="trailing" secondItem="vmd-lu-6AY" secondAttribute="trailing" constant="8" id="5PX-o2-UXX"/>
                                                 <constraint firstItem="KR8-yB-8GG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Vru-GH-HEf" secondAttribute="trailing" constant="8" id="Hkx-LW-4RW"/>
                                                 <constraint firstItem="Vru-GH-HEf" firstAttribute="leading" secondItem="Shs-Iv-SN2" secondAttribute="trailing" constant="8" id="Jff-cD-mZu"/>
                                                 <constraint firstAttribute="bottom" secondItem="yF6-HB-4jb" secondAttribute="bottom" constant="1" id="M4o-xs-EYX"/>
-                                                <constraint firstItem="L8k-QC-c7I" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vmd-lu-6AY" secondAttribute="bottom" constant="2" id="Nzn-nA-8Rh"/>
+                                                <constraint firstItem="L8k-QC-c7I" firstAttribute="top" secondItem="vmd-lu-6AY" secondAttribute="bottom" constant="2" id="Nzn-nA-8Rh"/>
                                                 <constraint firstItem="Shs-Iv-SN2" firstAttribute="top" secondItem="EF5-2h-fW6" secondAttribute="top" constant="8" id="PRT-RZ-dy8"/>
-                                                <constraint firstItem="yF6-HB-4jb" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vmd-lu-6AY" secondAttribute="bottom" constant="2" id="R5p-yg-Q7h"/>
+                                                <constraint firstItem="yF6-HB-4jb" firstAttribute="top" secondItem="vmd-lu-6AY" secondAttribute="bottom" constant="2" id="R5p-yg-Q7h"/>
                                                 <constraint firstItem="KR8-yB-8GG" firstAttribute="top" secondItem="EF5-2h-fW6" secondAttribute="topMargin" id="SY4-bp-4Bb"/>
                                                 <constraint firstItem="Shs-Iv-SN2" firstAttribute="leading" secondItem="0EQ-Oz-LwJ" secondAttribute="trailing" constant="8" id="ZOH-dT-y5W"/>
                                                 <constraint firstItem="L8k-QC-c7I" firstAttribute="leading" secondItem="EF5-2h-fW6" secondAttribute="leading" constant="59" id="dIj-T5-U83"/>
@@ -150,6 +150,13 @@
                                                 <constraint firstItem="0EQ-Oz-LwJ" firstAttribute="top" secondItem="EF5-2h-fW6" secondAttribute="top" constant="8" id="zSi-KY-YEa"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="createdAtLabel" destination="KR8-yB-8GG" id="4DR-y0-XSI"/>
+                                            <outlet property="handleLabel" destination="Vru-GH-HEf" id="Ata-KU-l8e"/>
+                                            <outlet property="profileImage" destination="0EQ-Oz-LwJ" id="ZlZ-h2-5uO"/>
+                                            <outlet property="tweetLabel" destination="vmd-lu-6AY" id="n3S-xL-K5y"/>
+                                            <outlet property="userLabel" destination="Shs-Iv-SN2" id="AFa-6C-aPb"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

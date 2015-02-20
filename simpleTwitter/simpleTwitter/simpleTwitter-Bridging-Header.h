@@ -3,4 +3,6 @@
 //
 
 #import "BDBOAuth1RequestOperationManager.h"
+#import "AFNetworking/AFNetworking.h"
+#import "AFNetworking/UIKit+AFNetworking.h"
 #import "DateTools.h"
