@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>4E0E3508-D135-4AE9-897A-0278F416A72F</string>
+	<key>IDESourceControlProjectName</key>
+	<string>simpleTwitter</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>07835B33F66036DA1336C10C4C7CC417F189AC71</key>
+		<string>https://github.com/anooptomar1/ios-simple-twitter.git</string>
+		<key>F8D5CCC0B848103AC2897358123470ADD4BF6303</key>
+		<string>https://bitbucket.org/anooptomar/bt-car.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>simpleTwitter/simpleTwitter.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>07835B33F66036DA1336C10C4C7CC417F189AC71</key>
+		<string>../../..</string>
+		<key>F8D5CCC0B848103AC2897358123470ADD4BF6303</key>
+		<string>../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/anooptomar1/ios-simple-twitter.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>07835B33F66036DA1336C10C4C7CC417F189AC71</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F8D5CCC0B848103AC2897358123470ADD4BF6303</string>
+			<key>IDESourceControlWCCName</key>
+			<string>..</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>07835B33F66036DA1336C10C4C7CC417F189AC71</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ios-simple-twitter</string>
+		</dict>
+	</array>
+</dict>
+</plist>

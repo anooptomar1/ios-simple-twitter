@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "896A83B01A94053C0086E72A"
+               BlueprintIdentifier = "89327C161A943BF4005A2594"
                BuildableName = "simpleTwitter.app"
                BlueprintName = "simpleTwitter"
                ReferencedContainer = "container:simpleTwitter.xcodeproj">
@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "896A83C51A94053C0086E72A"
+               BlueprintIdentifier = "89327C2B1A943BF4005A2594"
                BuildableName = "simpleTwitterTests.xctest"
                BlueprintName = "simpleTwitterTests"
                ReferencedContainer = "container:simpleTwitter.xcodeproj">
@@ -46,7 +46,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "896A83C51A94053C0086E72A"
+               BlueprintIdentifier = "89327C2B1A943BF4005A2594"
                BuildableName = "simpleTwitterTests.xctest"
                BlueprintName = "simpleTwitterTests"
                ReferencedContainer = "container:simpleTwitter.xcodeproj">
@@ -56,7 +56,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "896A83B01A94053C0086E72A"
+            BlueprintIdentifier = "89327C161A943BF4005A2594"
             BuildableName = "simpleTwitter.app"
             BlueprintName = "simpleTwitter"
             ReferencedContainer = "container:simpleTwitter.xcodeproj">
@@ -75,7 +75,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "896A83B01A94053C0086E72A"
+            BlueprintIdentifier = "89327C161A943BF4005A2594"
             BuildableName = "simpleTwitter.app"
             BlueprintName = "simpleTwitter"
             ReferencedContainer = "container:simpleTwitter.xcodeproj">
@@ -93,7 +93,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "896A83B01A94053C0086E72A"
+            BlueprintIdentifier = "89327C161A943BF4005A2594"
             BuildableName = "simpleTwitter.app"
             BlueprintName = "simpleTwitter"
             ReferencedContainer = "container:simpleTwitter.xcodeproj">
