@@ -42,6 +42,7 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
     func favoriteTweet(tweetId: NSString, complete:(success: Bool) -> ()){
         var param = ["id" : tweetId]
         TwitterClient.sharedInstance.POST("1.1/favorites/create.json", parameters: param, constructingBodyWithBlock: nil, success: { (operation: AFHTTPRequestOperation!, result: AnyObject!) -> Void in
+            //println(result["id_str"])
             complete(success: true)
             }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
             complete(success: false)
@@ -51,9 +52,29 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
     func destroyFavoriteTweet(tweetId: NSString, complete:(success: Bool) -> ()){
         var param = ["id" : tweetId]
         TwitterClient.sharedInstance.POST("1.1/favorites/destroy.json", parameters: param, constructingBodyWithBlock: nil, success: { (operation: AFHTTPRequestOperation!, result: AnyObject!) -> Void in
+            //println(result["id_str"])
             complete(success: true)
             }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
                 complete(success: false)
+        })
+    }
+    
+    func retweet(tweetObj: Tweet, complete: (retweetResp: String) -> ()){
+        TwitterClient.sharedInstance.POST("1.1/statuses/retweet/\(tweetObj.id).json", parameters: nil, success: { (operation: AFHTTPRequestOperation!, result: AnyObject!) -> Void in
+            //tweetObj.retweetId = result["id_str"] as NSString
+            complete(retweetResp: result["id_str"] as String)
+            }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+            println(error)
+        })
+    }
+    
+    func removeRetweet(retweetId: NSString, complete: (success: Bool) -> ()){
+        TwitterClient.sharedInstance.POST("1.1/statuses/destroy/\(retweetId).json", parameters: nil, success: { (operation: AFHTTPRequestOperation!, result: AnyObject!) -> Void in
+            //tweetObj.retweetId = result["id_str"] as NSString
+            complete(success: true)
+            }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                println(error)
+            complete(success: false)
         })
     }
     

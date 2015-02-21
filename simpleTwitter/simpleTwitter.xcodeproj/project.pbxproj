@@ -19,6 +19,7 @@
 		89327C481A946DC5005A2594 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89327C471A946DC5005A2594 /* User.swift */; };
 		89327C4A1A946DD0005A2594 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89327C491A946DD0005A2594 /* Tweet.swift */; };
 		89327C4E1A955454005A2594 /* TweetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89327C4D1A955454005A2594 /* TweetsViewController.swift */; };
+		89F676531A980FC0004BDDB1 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F676521A980FC0004BDDB1 /* DetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		89327C471A946DC5005A2594 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		89327C491A946DD0005A2594 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		89327C4D1A955454005A2594 /* TweetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetsViewController.swift; sourceTree = "<group>"; };
+		89F676521A980FC0004BDDB1 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 			children = (
 				89327C1E1A943BF4005A2594 /* ViewController.swift */,
 				89327C4D1A955454005A2594 /* TweetsViewController.swift */,
+				89F676521A980FC0004BDDB1 /* DetailsViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 				89327C481A946DC5005A2594 /* User.swift in Sources */,
 				89327C4A1A946DD0005A2594 /* Tweet.swift in Sources */,
 				89327C4E1A955454005A2594 /* TweetsViewController.swift in Sources */,
+				89F676531A980FC0004BDDB1 /* DetailsViewController.swift in Sources */,
 				89327C1F1A943BF4005A2594 /* ViewController.swift in Sources */,
 				89327C451A943E25005A2594 /* TwitterClient.swift in Sources */,
 				89327C1D1A943BF4005A2594 /* AppDelegate.swift in Sources */,

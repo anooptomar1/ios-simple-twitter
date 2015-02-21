@@ -8,17 +8,24 @@
 
 import UIKit
 
+protocol TweetTableViewCellDelegate: class{
+    func didFavoriteChanged(tweetTableViewCell: TweetTableViewCell, tweetValue: Tweet)
+}
+
 class TweetTableViewCell: UITableViewCell {
 
+    weak var delegate: TweetTableViewCellDelegate?
+    
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var userLabel: UILabel!
     @IBOutlet weak var handleLabel: UILabel!
     @IBOutlet weak var createdAtLabel: UILabel!
     @IBOutlet weak var tweetLabel: UILabel!
-    var tweetId = ""
-    var favorited = false
+    
+    var currentTweet: Tweet!
     
     @IBOutlet weak var favoriteBtn: UIButton!
+    @IBOutlet weak var retweetedBtn: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -41,11 +48,9 @@ class TweetTableViewCell: UITableViewCell {
         self.userLabel.text = tweet.user!.name
         self.handleLabel.text = "@\(tweet.user!.screenName)"
         self.createdAtLabel.text = tweet.createdAt?.shortTimeAgoSinceNow()
-        self.tweetId = tweet.id
-        self.favorited = tweet.favorited
-        if(tweet.favorited){
-            setFavoriteButton()
-        }
+        self.favoriteBtn.imageView?.image = tweet.favorited ? UIImage(named: "favorite_on") : UIImage(named: "favorite")
+        self.retweetedBtn.imageView?.image = tweet.retweeted ? UIImage(named: "retweet_on") : UIImage(named: "retweet")
+        currentTweet = tweet
     }
     
     override func layoutSubviews() {
@@ -54,30 +59,25 @@ class TweetTableViewCell: UITableViewCell {
     }
 
     @IBAction func onFavorite(sender: AnyObject) {
-        if(self.favorited){
-            TwitterClient.sharedInstance.destroyFavoriteTweet(self.tweetId, complete: { (success) -> () in
-                if(success){
-                    self.favorited = false
-                    self.setFavoriteButton()
-                }
-            })
-        }else{
-            TwitterClient.sharedInstance.favoriteTweet(self.tweetId, complete: { (success) -> () in
-                if(success){
-                    self.favorited = true
-                    self.setFavoriteButton()
-                }
-            })
-        }
-        println(self.tweetId)
+        setFavoriteButton()
+        self.delegate?.didFavoriteChanged(self, tweetValue: currentTweet)
     }
     
     func setFavoriteButton(){
-        if(self.favorited){
-            self.favoriteBtn.imageView?.image = UIImage(named: "favorite_on")
-        }
-        else{
-            self.favoriteBtn.imageView?.image = UIImage(named: "favorite")
+        if(currentTweet.favorited){
+            TwitterClient.sharedInstance.destroyFavoriteTweet(currentTweet.id, complete: { (success) -> () in
+                if(success){
+                    self.currentTweet.favorited = false
+                    self.favoriteBtn.imageView?.image = UIImage(named: "favorite")
+                }
+            })
+        }else{
+            TwitterClient.sharedInstance.favoriteTweet(currentTweet.id, complete: { (success) -> () in
+                if(success){
+                    self.currentTweet.favorited = true
+                    self.favoriteBtn.imageView?.image = UIImage(named: "favorite_on")
+                }
+            })
         }
     }
 }

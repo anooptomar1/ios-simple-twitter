@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TweetsViewController: UIViewController , UITableViewDelegate, UITableViewDataSource{
+class TweetsViewController: UIViewController , UITableViewDelegate, UITableViewDataSource, TweetTableViewCellDelegate, DetailsViewControllerDelegate{
 
     var tweets = [Tweet]()
     @IBOutlet weak var tableView: UITableView!
@@ -33,6 +33,7 @@ class TweetsViewController: UIViewController , UITableViewDelegate, UITableViewD
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.tableView.rowHeight = UITableViewAutomaticDimension;
+        tableView.reloadData()
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -48,10 +49,16 @@ class TweetsViewController: UIViewController , UITableViewDelegate, UITableViewD
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell") as TweetTableViewCell
-        if(tweets.count>0){
-            cell.setTweet(self.tweets[indexPath.row]);
-        }
+        var tweet = self.tweets[indexPath.row]
+        cell.setTweet(tweet);
+        //println(indexPath.row)
         return cell
+    }
+    
+    
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        super.didRotateFromInterfaceOrientation(fromInterfaceOrientation)
+        tableView.reloadData()
     }
     
     func newButtonItem(){
@@ -87,8 +94,34 @@ class TweetsViewController: UIViewController , UITableViewDelegate, UITableViewD
         User.CurrentUser?.Logout()
     }
     
+    func didFavoriteChanged(tweetTableViewCell: TweetTableViewCell, tweetValue: Tweet) {
+        for tweet in tweets{
+            if(tweet.id == tweetValue.id){
+                tweet.favorited = tweetValue.favorited
+                println("tweet: \(tweetValue.user?.name) fav \(tweetValue.favorited)")
+            }
+        }
+    }
+    
+    func didTweetObjectChanged(detailsViewController: DetailsViewController, tweet: Tweet) {
+        for aTweet in tweets{
+            if(aTweet.id == tweet.id){
+                aTweet.retweeted = tweet.retweeted
+                aTweet.favorited = tweet.favorited
+            }
+        }
+    }
+    
     func onNewTweet(){
         println("New tweet button")
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "detailsSegue"){
+            let details = segue.destinationViewController as DetailsViewController
+            var selectedIndexPath = self.tableView.indexPathForSelectedRow()!
+            details.tweet = self.tweets[selectedIndexPath.row]
+        }
     }
 
     /*
