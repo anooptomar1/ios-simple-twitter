@@ -26,6 +26,7 @@ class TweetTableViewCell: UITableViewCell {
     
     @IBOutlet weak var favoriteBtn: UIButton!
     @IBOutlet weak var retweetedBtn: UIButton!
+    @IBOutlet weak var replyBtn: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -50,6 +51,7 @@ class TweetTableViewCell: UITableViewCell {
         self.createdAtLabel.text = tweet.createdAt?.shortTimeAgoSinceNow()
         self.favoriteBtn.imageView?.image = tweet.favorited ? UIImage(named: "favorite_on") : UIImage(named: "favorite")
         self.retweetedBtn.imageView?.image = tweet.retweeted ? UIImage(named: "retweet_on") : UIImage(named: "retweet")
+        replyBtn.tag = tweet.id.integerValue
         currentTweet = tweet
     }
     

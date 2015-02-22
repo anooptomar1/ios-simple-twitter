@@ -8,9 +8,10 @@
 
 import UIKit
 
-class TweetsViewController: UIViewController , UITableViewDelegate, UITableViewDataSource, TweetTableViewCellDelegate, DetailsViewControllerDelegate{
-
+class TweetsViewController: UIViewController , UITableViewDelegate, UITableViewDataSource, TweetTableViewCellDelegate, DetailsViewControllerDelegate, NewTweetViewControllerDelegate{
+    var sTweet: Tweet?
     var tweets = [Tweet]()
+    
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,12 @@ class TweetsViewController: UIViewController , UITableViewDelegate, UITableViewD
         self.tableView.delegate = self
         self.tableView.rowHeight = UITableViewAutomaticDimension;
         
+        
+        reloadDataFromTwitter()
+        
+    }
+    
+    func reloadDataFromTwitter(){
         TwitterClient.sharedInstance.getHomeTimeline { (tweets) -> () in
             self.tweets = tweets!
             self.tableView.reloadData()
@@ -75,13 +82,17 @@ class TweetsViewController: UIViewController , UITableViewDelegate, UITableViewD
         self.navigationItem.leftBarButtonItem = logoutButton
     }
 
+    @IBAction func onReply(sender: AnyObject) {
+        sTweet = selectedTweet((sender as UIButton).tag)
+    }
+    
     func titleLabel(){
         var titleLabel = UILabel()
         titleLabel.text = "Home"
         titleLabel.textColor = UIColor.whiteColor()
         titleLabel.sizeToFit()
         titleLabel.backgroundColor = UIColor.clearColor()
-        titleLabel.font = UIFont(name: "Chalkduster", size: 20)
+        titleLabel.font = UIFont(name: "Chalkduster", size: 17)
         self.navigationItem.titleView = titleLabel
     }
     
@@ -113,7 +124,17 @@ class TweetsViewController: UIViewController , UITableViewDelegate, UITableViewD
     }
     
     func onNewTweet(){
-        println("New tweet button")
+        var newTweetVC = self.storyboard?.instantiateViewControllerWithIdentifier("newTweetVC") as NewTweetViewController
+        newTweetVC.delegate = self
+        var nvc = UINavigationController(rootViewController: newTweetVC)
+        
+        presentViewController(nvc, animated: true, completion: nil)
+    }
+    
+    func didPostNewTweet(newTweetViewController: NewTweetViewController, reload: Bool) {
+        if(reload){
+            NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval.abs(0.06), target: self, selector: "reloadDataFromTwitter", userInfo: nil, repeats: false)
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -121,9 +142,20 @@ class TweetsViewController: UIViewController , UITableViewDelegate, UITableViewD
             let details = segue.destinationViewController as DetailsViewController
             var selectedIndexPath = self.tableView.indexPathForSelectedRow()!
             details.tweet = self.tweets[selectedIndexPath.row]
+        }else if(segue.identifier == "reply2Segue"){
+            let reply = segue.destinationViewController as ReplyViewController
+            reply.originalTweet = sTweet!
+            reply.sourceVC = segue.sourceViewController as TweetsViewController
         }
     }
-
+    func selectedTweet(replyTag: Int) -> Tweet?{
+        for tweet in tweets{
+            if(tweet.id == "\(replyTag)"){
+                return tweet
+            }
+        }
+        return nil
+    }
     /*
     // MARK: - Navigation
 

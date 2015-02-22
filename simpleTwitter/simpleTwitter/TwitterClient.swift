@@ -39,6 +39,15 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         })
     }
     
+    func replyToTweet(tweetId: NSString, text: NSString){
+        var url = "1.1/statuses/update.json?status=\(text)&in_reply_to_status_id=\(tweetId)&display_coordinates=false"
+        TwitterClient.sharedInstance.POST(url, parameters: nil, success: { (operation:AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+            //println(response)
+            }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+            println(error)
+        })
+    }
+    
     func favoriteTweet(tweetId: NSString, complete:(success: Bool) -> ()){
         var param = ["id" : tweetId]
         TwitterClient.sharedInstance.POST("1.1/favorites/create.json", parameters: param, constructingBodyWithBlock: nil, success: { (operation: AFHTTPRequestOperation!, result: AnyObject!) -> Void in
@@ -64,7 +73,7 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
             //tweetObj.retweetId = result["id_str"] as NSString
             complete(retweetResp: result["id_str"] as String)
             }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
-            println(error)
+            println(error.description)
         })
     }
     

@@ -39,11 +39,14 @@ class DetailsViewController: UIViewController {
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 40/255, green: 177/255, blue: 255/255, alpha: 1.0)
         titleLabel()
         addLeftButton()
-        populateView();
+        addRightButton()
+        populateView()
     }
 
     func populateView(){
         self.profileImage.setImageWithURL(NSURL(string: (tweet?.user?.profileImageUrl)!))
+        self.profileImage.layer.cornerRadius = 5
+        self.profileImage.clipsToBounds = true
         self.userNameLbl.text = tweet?.user?.name
         self.sceenNameLbl.text = tweet?.user?.screenName
         let rtCount:Int = (tweet?.retweetCount)!
@@ -89,6 +92,18 @@ class DetailsViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = backButton
     }
     
+    func addRightButton(){
+        var replyButton = UIBarButtonItem(title: "Reply", style: UIBarButtonItemStyle.Plain, target: self, action: "onReplyButton")
+        replyButton.tintColor = UIColor.whiteColor()
+        replyButton.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Chalkduster", size: 12)!], forState: UIControlState.Normal)
+        
+        self.navigationItem.rightBarButtonItem = replyButton
+    }
+    
+    func onReplyButton(){
+        self.performSegueWithIdentifier("replySegue", sender: self)
+    }
+    
     func onBackButton(){
         self.delegate?.didTweetObjectChanged(self, tweet: tweet!)
         self.navigationController?.popToRootViewControllerAnimated(true)
@@ -128,7 +143,7 @@ class DetailsViewController: UIViewController {
         titleLabel.textColor = UIColor.whiteColor()
         titleLabel.sizeToFit()
         titleLabel.backgroundColor = UIColor.clearColor()
-        titleLabel.font = UIFont(name: "Chalkduster", size: 20)
+        titleLabel.font = UIFont(name: "Chalkduster", size: 17)
         self.navigationItem.titleView = titleLabel
     }
     
@@ -147,6 +162,14 @@ class DetailsViewController: UIViewController {
                     self.favoriteBtn.imageView?.image = UIImage(named: "favorite_on")
                 }
             })
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "replySegue"){
+            let replyVC = segue.destinationViewController as ReplyViewController
+            replyVC.originalTweet = tweet!
+            replyVC.sourceVC = segue.sourceViewController as DetailsViewController
         }
     }
     
