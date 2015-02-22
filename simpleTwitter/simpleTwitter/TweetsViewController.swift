@@ -12,10 +12,14 @@ class TweetsViewController: UIViewController , UITableViewDelegate, UITableViewD
     var sTweet: Tweet?
     var tweets = [Tweet]()
     
+    var refreshControl: UIRefreshControl!
+    
     @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        refreshControl = UIRefreshControl()
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 40/255, green: 177/255, blue: 255/255, alpha: 1.0)
         titleLabel()
         logoutButtonItem()
@@ -24,7 +28,10 @@ class TweetsViewController: UIViewController , UITableViewDelegate, UITableViewD
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.rowHeight = UITableViewAutomaticDimension;
+       
+        refreshControl.addTarget(self, action: "reloadDataFromTwitter", forControlEvents: UIControlEvents.ValueChanged)
         
+        tableView.insertSubview(refreshControl, atIndex: 0)
         
         reloadDataFromTwitter()
         
@@ -34,6 +41,7 @@ class TweetsViewController: UIViewController , UITableViewDelegate, UITableViewD
         TwitterClient.sharedInstance.getHomeTimeline { (tweets) -> () in
             self.tweets = tweets!
             self.tableView.reloadData()
+            self.refreshControl.endRefreshing()
         }
     }
     

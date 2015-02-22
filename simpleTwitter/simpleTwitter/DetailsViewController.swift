@@ -129,12 +129,18 @@ class DetailsViewController: UIViewController {
         tweet?.retweetId = newRetweetId
         retweetBtn.imageView!.image = UIImage(named: "retweet_on")
         tweet?.retweeted = true
+        self.tweet?.retweetCount! += 1
+        var count = self.tweet?.retweetCount!
+        self.retweetCountLbl.text = "\(count!)"
     }
     
     func removeRetweet(){
         tweet?.retweetId = ""
         retweetBtn.imageView!.image = UIImage(named: "retweet")
         tweet?.retweeted = false
+        self.tweet?.retweetCount! -= 1
+        var count = self.tweet?.retweetCount!
+        self.retweetCountLbl.text = "\(count!)"
     }
     
     func titleLabel(){
@@ -153,6 +159,9 @@ class DetailsViewController: UIViewController {
                 if(success){
                     self.tweet?.favorited = false
                     self.favoriteBtn.imageView?.image = UIImage(named: "favorite")
+                    self.tweet?.favoriteCount! -= 1
+                    let count = self.tweet?.favoriteCount!
+                    self.favoriteCountLbl.text = "\(count!)"
                 }
             })
         }else{
@@ -160,9 +169,13 @@ class DetailsViewController: UIViewController {
                 if(success){
                     self.tweet?.favorited = true
                     self.favoriteBtn.imageView?.image = UIImage(named: "favorite_on")
+                    self.tweet?.favoriteCount! += 1
+                    let count = self.tweet?.favoriteCount!
+                    self.favoriteCountLbl.text = "\(count!)"
                 }
             })
         }
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
