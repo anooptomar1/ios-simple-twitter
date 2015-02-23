@@ -25,7 +25,9 @@ class ViewController: UIViewController {
         TwitterClient.sharedInstance.loginWithCompletion(){
             (user: User?) in
             if(user != nil){
-                self.performSegueWithIdentifier("loginSegue", sender: self)
+                var tweetVC = self.storyboard?.instantiateViewControllerWithIdentifier("tweetsVC") as TweetsViewController
+                self.presentViewController(UINavigationController(rootViewController: tweetVC), animated: true, completion: nil)
+                //self.performSegueWithIdentifier("loginSegue", sender: self)
             }else{
                 // show error
             }
