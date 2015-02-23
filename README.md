@@ -29,3 +29,6 @@ Time spent: `14`
 ### Walkthrough
 
 ![Video Walkthrough](https://raw.githubusercontent.com/anooptomar1/ios-simple-twitter/master/screenshot.gif)
+
+### Login walkthrough
+![Video Walkthrough](https://raw.githubusercontent.com/anooptomar1/ios-simple-twitter/master/Login_screenshot.gif)
