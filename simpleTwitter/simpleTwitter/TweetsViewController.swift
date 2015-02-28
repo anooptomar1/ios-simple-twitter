@@ -8,11 +8,17 @@
 
 import UIKit
 
+protocol TweetsViewControllerDelegate: class{
+    func toggleMenu()
+}
+
 class TweetsViewController: UIViewController , UITableViewDelegate, UITableViewDataSource, TweetTableViewCellDelegate, DetailsViewControllerDelegate, NewTweetViewControllerDelegate{
     var sTweet: Tweet?
     var tweets = [Tweet]()
     
     var refreshControl: UIRefreshControl!
+    
+    weak var delegate: TweetsViewControllerDelegate?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -23,6 +29,7 @@ class TweetsViewController: UIViewController , UITableViewDelegate, UITableViewD
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 40/255, green: 177/255, blue: 255/255, alpha: 1.0)
         titleLabel()
         logoutButtonItem()
+        //menuButtonItem()
         newButtonItem()
         
         self.tableView.dataSource = self
@@ -81,6 +88,17 @@ class TweetsViewController: UIViewController , UITableViewDelegate, UITableViewD
         newTweetButton.tintColor = UIColor.whiteColor()
         newTweetButton.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Chalkduster", size: 12)!], forState: UIControlState.Normal)
         self.navigationItem.rightBarButtonItem = newTweetButton
+    }
+    
+    func menuButtonItem(){
+        var menuButton = UIBarButtonItem(title: "Menu", style: UIBarButtonItemStyle.Plain, target: self, action: "onMenu")
+        menuButton.tintColor = UIColor.whiteColor()
+        menuButton.setTitleTextAttributes([NSFontAttributeName:UIFont(name: "Chalkduster", size: 12)!], forState: UIControlState.Normal)
+        self.navigationItem.leftBarButtonItem = menuButton
+    }
+    
+    func onMenu(){
+        self.delegate?.toggleMenu()
     }
     
     func logoutButtonItem(){

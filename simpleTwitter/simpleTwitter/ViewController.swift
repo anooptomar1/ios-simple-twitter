@@ -12,8 +12,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,8 +23,9 @@ class ViewController: UIViewController {
         TwitterClient.sharedInstance.loginWithCompletion(){
             (user: User?) in
             if(user != nil){
-                var tweetVC = self.storyboard?.instantiateViewControllerWithIdentifier("tweetsVC") as TweetsViewController
-                self.presentViewController(UINavigationController(rootViewController: tweetVC), animated: true, completion: nil)
+                var containerViewController = self.storyboard?.instantiateViewControllerWithIdentifier("containerVC") as ContainerViewController
+                //var tweetVC = self.storyboard?.instantiateViewControllerWithIdentifier("tweetsVC") as TweetsViewController
+                self.presentViewController(containerViewController, animated: true, completion: nil)
                 //self.performSegueWithIdentifier("loginSegue", sender: self)
             }else{
                 // show error

@@ -22,7 +22,7 @@
 		<key>07835B33F66036DA1336C10C4C7CC417F189AC71</key>
 		<string>../../..</string>
 		<key>F8D5CCC0B848103AC2897358123470ADD4BF6303</key>
-		<string>../../../../..</string>
+		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/anooptomar1/ios-simple-twitter.git</string>
@@ -38,7 +38,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>F8D5CCC0B848103AC2897358123470ADD4BF6303</string>
 			<key>IDESourceControlWCCName</key>
-			<string>..</string>
+			<string></string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>

@@ -20,9 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if(User.CurrentUser != nil){
             //println("Current User: \(User.CurrentUser?.name)")
-            var tweetsVC = storyboard.instantiateViewControllerWithIdentifier("tweetsVC") as UIViewController
-            var navController = UINavigationController(rootViewController: tweetsVC)
-            window?.rootViewController = navController
+            var containerViewController = storyboard.instantiateViewControllerWithIdentifier("containerVC") as ContainerViewController
+            window?.rootViewController = containerViewController
         }
         return true
     }
