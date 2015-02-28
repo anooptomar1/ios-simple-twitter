@@ -55,6 +55,9 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.delegate?.didSelectMenu(menuItems[indexPath.row].name)
     }
     
+    @IBAction func onImageTap(sender: UITapGestureRecognizer) {
+        self.delegate?.didSelectMenu("Me")
+    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("menuCell") as MenuTableViewCell
