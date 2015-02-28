@@ -191,28 +191,37 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anoop Tomar" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AxU-dY-m7j">
-                                        <rect key="frame" x="113" y="65.5" width="94" height="18"/>
+                                        <rect key="frame" x="113" y="65" width="94" height="18"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@anooptomar" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sbs-Wg-woB">
-                                        <rect key="frame" x="121.5" y="85.5" width="77.5" height="14.5"/>
+                                        <rect key="frame" x="121" y="85" width="77.5" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="2A0-UT-vFH">
+                                        <rect key="frame" x="149" y="91" width="23" height="37"/>
+                                    </pageControl>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="Sbs-Wg-woB" firstAttribute="top" secondItem="AxU-dY-m7j" secondAttribute="bottom" constant="2" id="5OK-vj-J7t"/>
                                     <constraint firstItem="AxU-dY-m7j" firstAttribute="centerX" secondItem="Sbs-Wg-woB" secondAttribute="centerX" id="8nI-LC-1aO"/>
                                     <constraint firstItem="AxU-dY-m7j" firstAttribute="top" secondItem="4Ni-G9-epr" secondAttribute="bottom" constant="4" id="DBI-Ch-GBe"/>
                                     <constraint firstAttribute="centerX" secondItem="4Ni-G9-epr" secondAttribute="centerX" id="cAd-cs-4wm"/>
                                     <constraint firstItem="AxU-dY-m7j" firstAttribute="centerX" secondItem="4Ni-G9-epr" secondAttribute="centerX" id="gF5-7m-sv7"/>
+                                    <constraint firstItem="2A0-UT-vFH" firstAttribute="top" secondItem="AxU-dY-m7j" secondAttribute="bottom" constant="7.5" id="sZO-nb-exh"/>
                                     <constraint firstAttribute="height" constant="119.5" id="tjq-VE-Djd"/>
+                                    <constraint firstAttribute="centerX" secondItem="2A0-UT-vFH" secondAttribute="centerX" id="vuN-NM-fvb"/>
                                     <constraint firstItem="4Ni-G9-epr" firstAttribute="top" secondItem="DCu-IB-88i" secondAttribute="top" constant="13.5" id="vvG-8X-MKi"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="wby-SC-CzT" appends="YES" id="JyS-Bv-nuT"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -224,6 +233,7 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="pageCtrl" destination="2A0-UT-vFH" id="jyD-GM-5W2"/>
                         <outlet property="screenNameLabel" destination="Sbs-Wg-woB" id="tGs-2R-uMs"/>
                         <outlet property="userBackImage" destination="DCu-IB-88i" id="guA-6y-sZd"/>
                         <outlet property="userNameLabel" destination="AxU-dY-m7j" id="qGm-yd-qjM"/>
@@ -231,6 +241,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kPL-KU-YBN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="wby-SC-CzT">
+                    <connections>
+                        <action selector="OnPanGesture:" destination="zdt-ly-AJb" id="moc-fr-TbS"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1004" y="-370"/>
         </scene>

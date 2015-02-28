@@ -8,12 +8,13 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var userProfileImage: UIImageView!
     @IBOutlet weak var userBackImage: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var screenNameLabel: UILabel!
+    @IBOutlet weak var pageCtrl: UIPageControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +23,8 @@ class ProfileViewController: UIViewController {
         self.userProfileImage.clipsToBounds = true
         self.userBackImage.setImageWithURL(NSURL(string: (User.CurrentUser?.profileBackImage)!))
         self.userProfileImage.setImageWithURL(NSURL(string: (User.CurrentUser?.profileImageUrl)!))
-        self.userNameLabel.text = User.CurrentUser?.name
-        self.screenNameLabel.text = "@\(User.CurrentUser?.screenName)"
+        self.userNameLabel.text = User.CurrentUser!.name
+        self.screenNameLabel.text = "@\(User.CurrentUser!.screenName)"
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,15 +32,18 @@ class ProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func OnPanGesture(sender: UIPanGestureRecognizer) {
+        var lTR = sender.velocityInView(view).x > 0
+        if(lTR){
+            pageCtrl.currentPage = 1
+            self.userNameLabel.text = "\(User.CurrentUser!.name) : Page 2"
+            self.screenNameLabel.text = "@\(User.CurrentUser!.screenName)"
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        }else{
+            pageCtrl.currentPage = 0
+            self.userNameLabel.text = "\(User.CurrentUser!.name)"
+            self.screenNameLabel.text = "@\(User.CurrentUser!.screenName)"
+        }
     }
-    */
-
+   
 }
