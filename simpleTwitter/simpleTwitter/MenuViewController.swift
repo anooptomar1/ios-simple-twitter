@@ -28,7 +28,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         menuItems = [MenuItem]()
         var homeMenu = MenuItem(_name: "Me", _icon:  UIImage(named: "birds6")!)
-        var timelineMenu = MenuItem(_name: "Timeline", _icon:  UIImage(named: "user168")!)
+        var timelineMenu = MenuItem(_name: "Mentions", _icon:  UIImage(named: "user168")!)
         menuItems.append(homeMenu)
         menuItems.append(timelineMenu)
         
@@ -43,6 +43,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource = self
         
         tableView.reloadData()
+        tableView.tableFooterView = UIView(frame: CGRectZero)
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

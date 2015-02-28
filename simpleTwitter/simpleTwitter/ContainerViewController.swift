@@ -73,6 +73,10 @@ class ContainerViewController: UIViewController, TweetsViewControllerDelegate, U
             var profileVC = sb.instantiateViewControllerWithIdentifier("profileVC") as ProfileViewController
             var profileNavController = UINavigationController(rootViewController: profileVC)
             presentViewController(profileNavController, animated: true, completion: nil)
+        }else if(menu == "Mentions"){
+            var mentionVC = sb.instantiateViewControllerWithIdentifier("mentionVC") as MentionsViewController
+            var mentionNavController = UINavigationController(rootViewController: mentionVC)
+            presentViewController(mentionNavController, animated: true, completion: nil)
         }
         shouldAnimateOpen(false)
     }

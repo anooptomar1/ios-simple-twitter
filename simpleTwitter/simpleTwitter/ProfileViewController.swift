@@ -47,6 +47,7 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate, UITa
         tableView.dataSource = self
         self.tableView.rowHeight = 110
         self.tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.tableFooterView = UIView(frame: CGRectZero)
     }
     
     func setupNavbar(){

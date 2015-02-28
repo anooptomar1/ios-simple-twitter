@@ -41,7 +41,7 @@ class TweetsViewController: UIViewController , UITableViewDelegate, UITableViewD
         tableView.insertSubview(refreshControl, atIndex: 0)
         
         reloadDataFromTwitter()
-        
+        tableView.tableFooterView = UIView(frame: CGRectZero)
     }
     
     func reloadDataFromTwitter(){
