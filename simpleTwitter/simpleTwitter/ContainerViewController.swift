@@ -77,6 +77,8 @@ class ContainerViewController: UIViewController, TweetsViewControllerDelegate, U
             var mentionVC = sb.instantiateViewControllerWithIdentifier("mentionVC") as MentionsViewController
             var mentionNavController = UINavigationController(rootViewController: mentionVC)
             presentViewController(mentionNavController, animated: true, completion: nil)
+        } else if(menu == "Logout"){
+            User.CurrentUser?.Logout()
         }
         shouldAnimateOpen(false)
     }

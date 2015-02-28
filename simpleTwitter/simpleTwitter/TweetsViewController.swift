@@ -28,8 +28,8 @@ class TweetsViewController: UIViewController , UITableViewDelegate, UITableViewD
         refreshControl = UIRefreshControl()
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 40/255, green: 177/255, blue: 255/255, alpha: 1.0)
         titleLabel()
-        logoutButtonItem()
-        //menuButtonItem()
+        //logoutButtonItem()
+        menuButtonItem()
         newButtonItem()
         
         self.tableView.dataSource = self

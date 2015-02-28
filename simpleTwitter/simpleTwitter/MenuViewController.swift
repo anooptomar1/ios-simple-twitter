@@ -28,9 +28,14 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         menuItems = [MenuItem]()
         var homeMenu = MenuItem(_name: "Me", _icon:  UIImage(named: "birds6")!)
+        var timeline = MenuItem(_name: "Timeline", _icon:  UIImage(named: "time39")!)
         var timelineMenu = MenuItem(_name: "Mentions", _icon:  UIImage(named: "user168")!)
+        var logoutMenu = MenuItem(_name: "Logout", _icon: UIImage(named: "logout20")!)
+        
         menuItems.append(homeMenu)
+        menuItems.append(timeline)
         menuItems.append(timelineMenu)
+        menuItems.append(logoutMenu)
         
         userImage.setImageWithURL(NSURL(string: User.CurrentUser!.profileImageUrl))
         userImage.layer.cornerRadius = 5
