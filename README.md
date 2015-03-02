@@ -29,7 +29,7 @@ Time spent: `12`
 
 ### Walkthrough
 
-![Video Walkthrough](https://raw.githubusercontent.com/anooptomar1/ios-simple-twitter/master/screenshot.gif)
+![Video Walkthrough](https://raw.githubusercontent.com/anooptomar1/ios-simple-twitter/master/Menu_screenshot.gif)
 
 ### Assignment 3
 
