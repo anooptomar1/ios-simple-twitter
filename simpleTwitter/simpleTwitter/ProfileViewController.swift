@@ -28,6 +28,7 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate, UITa
         setupNavbar()
         
         self.userBackImage.contentMode = UIViewContentMode.ScaleAspectFill
+        self.userBackImage.alpha = 0.5
         self.userProfileImage.layer.cornerRadius = 5
         self.userProfileImage.clipsToBounds = true
         self.userBackImage.setImageWithURL(NSURL(string: (User.CurrentUser?.profileBackImage)!))
@@ -86,12 +87,18 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate, UITa
         if(lTR){
             pageCtrl.currentPage = 1
             self.userNameLabel.text = "\(User.CurrentUser!.name) : Page 2"
-            self.screenNameLabel.text = "@\(User.CurrentUser!.screenName)"
+            self.screenNameLabel.text = "@\(User.CurrentUser!.screenName) : Page 2"
+            UIView.animateWithDuration(1, animations: {
+                self.userBackImage.alpha = 1.0
+            })
 
         }else{
             pageCtrl.currentPage = 0
             self.userNameLabel.text = "\(User.CurrentUser!.name)"
             self.screenNameLabel.text = "@\(User.CurrentUser!.screenName)"
+            UIView.animateWithDuration(1, animations: {
+                self.userBackImage.alpha = 0.5
+            })
         }
     }
    
