@@ -62,6 +62,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("menuCell") as MenuTableViewCell
         cell.menuPic.image = menuItems[indexPath.row].icon
+        cell.menuPic.tintColor = UIColor.whiteColor()
         cell.menuLabel.text = menuItems[indexPath.row].name
         return cell
     }
